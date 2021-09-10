@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Weather from '../components/Weather';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'weather-icons/css/weather-icons.css';
@@ -6,19 +6,27 @@ import '../styles/App.css';
 
 
 //api.openweathermap.org/data/2.5/weather?q=London&appid={API key}
-const API_key = "9dcc9a75583b1ef8ae3031dd9d94434d";
+
 
 const App = () => {
-
+  const API_key = "9dcc9a75583b1ef8ae3031dd9d94434d"
+  const [weather, setweather] = useState({})
   useEffect(() => {
-    fetch(`api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=${API_key}`)
-    .then(response => response.json)
-    .then(data => console.log(data))
-  }, []);
+    return (
+      fetch(`https://api.openweathermap.org/data/2.5/weather?q=London&appid=${API_key}`)
+      .then(response => response.json())
+      .then(data =>
+        setweather({
+          name: data.name,
+          conditions: data.weather[0].main
+      }))
+    )
+  }, [])
 
   return (
     <div className="App">
-      <Weather />
+      <Weather weather= {weather}/>
+
     </div>
   )
 }

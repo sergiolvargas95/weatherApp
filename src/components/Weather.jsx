@@ -1,18 +1,18 @@
 import React from 'react';
 import '../styles/Weather.css';
 
-const Weather = () => {
+const Weather = ({ weather }) => {
     return (
         <div className="container">
             <div className="cards">
-                <h1>London</h1>
+                <h1>{weather.name}</h1>
                 <h5 className="py-4">
                     <i className="wi wi-day-sunny display-1"></i>
                 </h5>
                 <h2 className="py-2">25&deg;</h2>
                 {    /**show max and min temp */    }
                 {minmaxTemp(24, 18)}
-                <h4 className="py-3">Slow Rain</h4>
+                <h4 className="py-3">{weather.conditions}</h4>
             </div>
         </div>
     )
