@@ -7,12 +7,12 @@ const Weather = ({ weather }) => {
             <div className="cards">
                 <h1>{weather.name}</h1>
                 <h5 className="py-4">
-                    <i className="wi wi-day-sunny display-1"></i>
+                    <i className={`wi ${weather.icon} display-1`}></i>
                 </h5>
-                <h2 className="py-2">25&deg;</h2>
+                <h2 className="py-2">{weather.celsius}&deg;</h2>
                 {    /**show max and min temp */    }
-                {minmaxTemp(24, 18)}
-                <h4 className="py-3">{weather.conditions}</h4>
+                {minmaxTemp(weather.temp_min, weather.temp_max)}
+                <h4 className="py-3">{weather.description}</h4>
             </div>
         </div>
     )
@@ -27,3 +27,6 @@ const minmaxTemp = (min, max) => {
     )
 }
 export default Weather
+
+
+
