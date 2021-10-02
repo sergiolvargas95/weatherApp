@@ -13,13 +13,13 @@ const App = () => {
   const API_key = "9dcc9a75583b1ef8ae3031dd9d94434d";
   const [ search, setSearch ] = useState();
   const [weather, setweather] = useState({
-    name:"City",
+    name:"",
     icon: "",
     main: "",
     celsius:"0",
     temp_max:"0",
     temp_min:"0",
-    description:"null",
+    description:"",
     error: false,
   })
 
@@ -74,6 +74,11 @@ const App = () => {
           description: data.weather[0].main,
           error: false,
       }))
+      .catch(err =>
+        setweather({
+          error: true
+      }))
+      .catch(console.log(weather.error))
   )}
 
   return (
@@ -83,7 +88,9 @@ const App = () => {
         getWeather={getWeather}
 
       />
-      <Weather weather={weather} />
+      <Weather
+        weather={weather}
+      />
     </div>
   )
 }

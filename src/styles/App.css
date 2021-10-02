@@ -5,6 +5,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: rgb(176,169,255);
+    background: linear-gradient(311deg, rgba(176,169,255,1) 38%, rgba(154,224,255,1) 100%);
+    color: white
 }
 
 .row {
